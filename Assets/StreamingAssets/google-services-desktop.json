@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "147796051014",
+    "project_id": "memogame-cc3ec",
+    "storage_bucket": "memogame-cc3ec.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147796051014:android:cad3eafcde485a62c5b647",
+        "android_client_info": {
+          "package_name": "com.MathCompany.MemoGame"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGKY5kEjKPZMZRUlpq99GB7Y2fMAJBBoQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

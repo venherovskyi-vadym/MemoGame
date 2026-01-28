@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49765ac2b3fd471488ba9bd61794f8ec, type: 3}
+  m_Name: DogsCardsStorage
+  m_EditorClassIdentifier: Assembly-CSharp::CardsStorage
+  _cards:
+  - {fileID: 21300000, guid: e1cf6d0251d239246a6e395df5fe188e, type: 3}
+  - {fileID: 21300000, guid: 08bc4108d59c12742940f46d3f31786a, type: 3}
+  - {fileID: 21300000, guid: 82144ed6e7248ae4b9e71865a219d7b9, type: 3}
+  - {fileID: 21300000, guid: 58ade11eb8ff21e40a7af1177c692f5f, type: 3}
+  - {fileID: 21300000, guid: 305187988d734f648b9cfacfa1c52e56, type: 3}
+  - {fileID: 21300000, guid: cb2fd24113eea7c4bbac1b8f51b75518, type: 3}
+  - {fileID: 21300000, guid: bbe4b1df9a1a9ed42937119f13b0d380, type: 3}
+  - {fileID: 21300000, guid: db8103340a6af52408f44914a4b7ecf5, type: 3}
+  - {fileID: 21300000, guid: ac53c66c1edc27c48a7e8efe5e759b8a, type: 3}
+  - {fileID: 21300000, guid: a0c6ab82659d0374189ace8ebd605304, type: 3}
+  - {fileID: 21300000, guid: 0044554c844c881408aabf06128cee1a, type: 3}
+  - {fileID: 21300000, guid: 8ee830a2bbb4200429466ca791344086, type: 3}
+  - {fileID: 21300000, guid: 506487854f136bd4b8c70f51e3b3b8cc, type: 3}
+  - {fileID: 21300000, guid: e5d2c477e5f4d6a4d92982c35bc2e105, type: 3}
+  - {fileID: 21300000, guid: 0d20c7a9bb8fb7144b76ef585195f073, type: 3}
+  - {fileID: 21300000, guid: 31bc3ca029ab1364cb46e24a530b0f53, type: 3}
+  - {fileID: 21300000, guid: 13e415434937b1e4093df6830fd13784, type: 3}
+  - {fileID: 21300000, guid: 9038d1a4678959e48a421d416e762f1d, type: 3}
+  - {fileID: 21300000, guid: 69fd9a5fb7eef134a892582507c1c37f, type: 3}
+  - {fileID: 21300000, guid: f8647067310792a49bae14ecc6472378, type: 3}
+  - {fileID: 21300000, guid: 1157a1c223b79674f978cd4abf3cf257, type: 3}
+  - {fileID: 21300000, guid: 31bb53dd5d60962469543feb913268e2, type: 3}
+  - {fileID: 21300000, guid: b86d22da528e6c24ca101a32f6460594, type: 3}
