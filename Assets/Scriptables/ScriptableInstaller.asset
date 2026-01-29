@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fc93dbfa8704cf46892719cf4dc3c2c, type: 3}
   m_Name: ScriptableInstaller
   m_EditorClassIdentifier: Assembly-CSharp::ScriptableInstaller
-  CardsStorage: {fileID: 11400000, guid: 8a30fc2223d028449ba9fc97d7c16adb, type: 2}
+  _cardsStorage: {fileID: 11400000, guid: 8a30fc2223d028449ba9fc97d7c16adb, type: 2}
+  _difficultyStorage: {fileID: 11400000, guid: e8b89f0414e71944a8eadce06223081b, type: 2}

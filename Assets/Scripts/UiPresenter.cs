@@ -1,7 +1,7 @@
 using System;
 using Zenject;
 
-public abstract class UiPresenter : IInitializable, IDisposable, IUIPresenter
+public abstract class UiPresenter : IInitializable, IDisposable, IUIPresenter, ITickable
 {
     public bool IsShown { get; private set; }
 
@@ -35,4 +35,8 @@ public abstract class UiPresenter : IInitializable, IDisposable, IUIPresenter
 	public virtual void Initialize()
 	{
 	}
+
+    public virtual void Tick()
+    {        
+    }
 }

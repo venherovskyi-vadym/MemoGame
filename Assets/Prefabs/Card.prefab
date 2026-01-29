@@ -204,8 +204,8 @@ MonoBehaviour:
   Button: {fileID: 7130204509094602946}
   Image: {fileID: 8663640858406794294}
   Id: 0
-  Back: {fileID: 0}
-  Front: {fileID: 0}
+  Back: {fileID: 3217371540259566022}
+  Front: {fileID: 4213172195781772572}
 --- !u!114 &7130204509094602946
 MonoBehaviour:
   m_ObjectHideFlags: 0

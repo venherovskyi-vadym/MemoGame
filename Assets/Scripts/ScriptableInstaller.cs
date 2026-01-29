@@ -4,11 +4,13 @@ using Zenject;
 [CreateAssetMenu(fileName = "ScriptableInstaller", menuName = "Installers/ScriptableInstaller")]
 public class ScriptableInstaller : ScriptableObjectInstaller
 {
-    [SerializeField] private CardsStorage CardsStorage;
+    [SerializeField] private CardsStorage _cardsStorage;
+    [SerializeField] private DifficultyStorage _difficultyStorage;
 
     public override void InstallBindings()
     {
-        Container.Bind<CardsStorage>().FromScriptableObject(CardsStorage).AsSingle();
+        Container.Bind<CardsStorage>().FromScriptableObject(_cardsStorage).AsSingle();
+        Container.Bind<DifficultyStorage>().FromScriptableObject(_difficultyStorage).AsSingle();
         InstallSignalBus();
         InstallSignals();
     }
