@@ -96,6 +96,7 @@ public class MemoGamePresenter : UiPresenterBase<MemoGameView>
         View.MovesText.text = _turns.ToString();
         TurnCard(view);
         CountCards(view.Id);
+        CheckWin();
     }
 
     private void ResetTurnedCards(Unit _)
@@ -144,11 +145,29 @@ public class MemoGamePresenter : UiPresenterBase<MemoGameView>
         _countByIds[id] = idCount;
 
         if(CardGroupCollected(id))
-            _turnedCards.RemoveAll(ra=>ra.Id == id);
+        {
+            _turnedCards.RemoveAll(ra => ra.Id == id);
+            _collectedIds.Add(id);
+        }
+    }
+
+    private void CheckWin()
+    {
+        if(_collectedIds.Count < _groupsCount)
+            return;
+
+        foreach (var item in _collectedIds)
+        {
+            if(_countByIds.TryGetValue(item, out var collected) && collected < _difficulty)
+                break;
+        }
+
+        View.WinEffect.SetActive(true);
     }
 
     private void LaunchGame(int difficulty)
     {
+        View.WinEffect.SetActive(false);
         _difficultyTime = _difficultyStorage.GetTime(difficulty, _minDifficulty, _maxDifficulty);
         _startTime = Time.time;
         _difficulty = difficulty;

@@ -12,4 +12,5 @@ public class MemoGameView : UIBehaviour
     public Transform CardsParent;
     public TextMeshProUGUI CountDownText;
     public TextMeshProUGUI MovesText;
+    public GameObject WinEffect;
 }
