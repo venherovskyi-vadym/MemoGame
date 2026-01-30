@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Firebase.Analytics;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -20,6 +21,7 @@ public class MemoGamePresenter : UiPresenterBase<MemoGameView>
     private int _turns;
     private float _startTime;
     private float _difficultyTime;
+    private ReactiveProperty<bool?> _gameOutcome = new ReactiveProperty<bool?>();
 
     public MemoGamePresenter(
         MemoGameView view, 
@@ -39,6 +41,7 @@ public class MemoGamePresenter : UiPresenterBase<MemoGameView>
         _signalBus.GetStream<LaunchGameSignal>().Subscribe(LaunchGame).AddTo(_disposables);
         View.ReStartButton.onClick.AsObservable().Subscribe(RelaunchGame).AddTo(_disposables);
         View.ResetTurnedCardsButton.onClick.AsObservable().Subscribe(ResetTurnedCards).AddTo(_disposables);
+        _gameOutcome.Subscribe(MatchEnded).AddTo(_disposables);
         
         foreach (var item in View.Cards)
         {
@@ -58,10 +61,23 @@ public class MemoGamePresenter : UiPresenterBase<MemoGameView>
     {
         base.Tick();
 
-        if(_difficultyTime - (Time.time - _startTime) <= 0 || _collectedIds.Count == _groupsCount)
+        var lost = _difficultyTime - (Time.time - _startTime) <= 0;
+
+        if(lost)
+            _gameOutcome.Value = false;
+
+        if(lost || _collectedIds.Count == _groupsCount)
             View.ResetTurnedCardsButton.gameObject.SetActive(false);
         else
             View.CountDownText.text = ((int)(_difficultyTime -(Time.time - _startTime))).ToString();
+    }
+
+    private void MatchEnded(bool? outcome)
+    {
+        if(outcome.HasValue)
+            FirebaseAnalytics.LogEvent(FirebaseAnalytics.EventLevelEnd, "success", outcome.Value.ToString());
+        else
+            FirebaseAnalytics.LogEvent(FirebaseAnalytics.EventLevelEnd);
     }
 
     private void RelaunchGame(Unit _)
@@ -69,6 +85,7 @@ public class MemoGamePresenter : UiPresenterBase<MemoGameView>
         _turns = 0;
         View.ResetTurnedCardsButton.gameObject.SetActive(false);
         LaunchGame(_difficulty);
+        FirebaseAnalytics.LogEvent("level_restart", "difficulty", _difficulty);
     }
 
     private void LaunchGame(LaunchGameSignal signal)
@@ -77,6 +94,7 @@ public class MemoGamePresenter : UiPresenterBase<MemoGameView>
             return;
 
         LaunchGame(signal.Difficulty);
+        FirebaseAnalytics.LogEvent(FirebaseAnalytics.EventLevelStart, "difficulty", signal.Difficulty);
 
         Show();
         _signalBus.Fire(new GameLaunchedSignal());
@@ -163,10 +181,12 @@ public class MemoGamePresenter : UiPresenterBase<MemoGameView>
         }
 
         View.WinEffect.SetActive(true);
+        _gameOutcome.Value = true;
     }
 
     private void LaunchGame(int difficulty)
     {
+        _gameOutcome.Value = null;
         View.WinEffect.SetActive(false);
         _difficultyTime = _difficultyStorage.GetTime(difficulty, _minDifficulty, _maxDifficulty);
         _startTime = Time.time;

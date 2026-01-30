@@ -1,6 +1,8 @@
 using UniRx;
 using UnityEngine;
 using Zenject;
+using Firebase.Analytics;
+using Firebase;
 
 public class StartScreenPresenter : UiPresenterBase<StartScreenView>
 {
@@ -22,6 +24,7 @@ public class StartScreenPresenter : UiPresenterBase<StartScreenView>
         View.PlayerNameProperty.InputField.onSubmit.AsObservable().Subscribe(SubmitPlayerName).AddTo(_disposables);
         View.DifficultyProperty.Slider.onValueChanged.AsObservable().Subscribe(DifficultyChanged).AddTo(_disposables);
         View.StartButton.onClick.AsObservable().Subscribe(LaunchGame).AddTo(_disposables);
+        FirebaseAnalytics.LogEvent(FirebaseAnalytics.EventLogin, _playerNameKey, View.PlayerNameProperty.InputField.text);
     }
 
     public override void Dispose()
