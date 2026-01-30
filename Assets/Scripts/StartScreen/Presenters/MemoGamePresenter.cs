@@ -160,6 +160,9 @@ public class MemoGamePresenter : UiPresenterBase<MemoGameView>
         _collectedIds.Clear();
         _turnedCards.Clear();
 
+        foreach (var item in View.Cards)
+            SetCardState(item, false);
+
         for (int i = 0; i < _cardsStorage.Count; i++)
             _usedIds.Add(i);
 
@@ -179,7 +182,7 @@ public class MemoGamePresenter : UiPresenterBase<MemoGameView>
             View.Cards[i].gameObject.SetActive(usablecard);
 
             if(!usablecard)
-                break;
+                continue;
             var idIndex = Random.Range(0, _usedIds.Count);
             var id = _usedIds[idIndex];
             View.Cards[i].Image.sprite = _cardsStorage.GetSprite(id);
