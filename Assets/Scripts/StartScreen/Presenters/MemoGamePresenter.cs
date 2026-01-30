@@ -73,7 +73,7 @@ public class MemoGamePresenter : UiPresenterBase<MemoGameView>
 
     private void LaunchGame(LaunchGameSignal signal)
     {
-        if(signal.Difficulty < _minDifficulty || signal.Difficulty > _minDifficulty)
+        if(signal.Difficulty < _minDifficulty || signal.Difficulty > _maxDifficulty)
             return;
 
         LaunchGame(signal.Difficulty);
