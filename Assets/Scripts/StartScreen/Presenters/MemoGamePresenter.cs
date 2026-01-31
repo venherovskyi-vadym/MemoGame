@@ -85,6 +85,7 @@ public class MemoGamePresenter : UiPresenterBase<MemoGameView>
         _turns = 0;
         View.ResetTurnedCardsButton.gameObject.SetActive(false);
         LaunchGame(_difficulty);
+        View.CountDownText.text = ((int)(_difficultyTime -(Time.time - _startTime))).ToString();
         FirebaseAnalytics.LogEvent("level_restart", "difficulty", _difficulty);
     }
 
@@ -102,7 +103,7 @@ public class MemoGamePresenter : UiPresenterBase<MemoGameView>
 
     private void CardClicked(CardView view)
     {
-        if(CardGroupCollected(view.Id))
+        if(CardGroupCollected(view.Id) || _gameOutcome.Value.HasValue)
             return;
 
         if(!FitTurnedCards(view.Id))
