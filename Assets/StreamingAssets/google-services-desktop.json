@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "147796051014",
+    "firebase_url": "https://memogame-cc3ec-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "memogame-cc3ec",
     "storage_bucket": "memogame-cc3ec.firebasestorage.app"
   },
